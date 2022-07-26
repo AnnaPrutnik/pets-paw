@@ -1,0 +1,43 @@
+Pallete:
+
+Home:
+bgColor:#F8F8F7,
+bgColor-right-frame: #FBE0DC,
+title-text: #1D1D1D,
+text: #8C8C8C,
+button-text:#FF868E
+
+    violetCard:
+        border: rgba(255, 255, 255, 0.6),
+        bgcolor:#B4B7FF,
+
+        greenCard:
+            border: rgba(255, 255, 255, 0.6),
+            bgcolor: #97EAB9,
+
+        orangeCard:
+            border: rgba(255, 255, 255, 0.6),
+            bgcolor: #FFD280,
+
+Components:
+
+    Button:
+        bg-color:
+            standart: #FFFFFF,
+            hover: #FBE0DC,
+            active:#FF868E
+
+        text:
+            standart/hover:#FF868E,
+            active:#FFFFFF
+
+    Icons:
+        fill:
+            standart/hover:#FF868E,
+            active:#FFFFFF
+
+ <ActionIconButton isWhite={false} icon='back' />
+          <ActionIconButton isWhite={false} icon='search' />
+          <ActionIconButton isWhite={true} icon='close' />
+          <ActionIconButton isWhite={true} icon='favorite' />
+          <ActionIconButton isWhite={true} icon='favorite-color' />
