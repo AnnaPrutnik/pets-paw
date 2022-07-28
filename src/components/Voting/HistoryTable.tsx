@@ -10,7 +10,7 @@ interface HistoryTableProps {
 }
 const StyledStack = styled(Stack)(({ theme }) => ({
   padding: '15px',
-  backgroundColor: theme.bgColor,
+  backgroundColor: theme.bgColor.dark,
   justifyContent: 'space-between',
   borderRadius: '10px',
 }));
@@ -43,7 +43,10 @@ export const HistoryTable = ({ history }: HistoryTableProps) => {
               >
                 <Box
                   sx={{
-                    backgroundColor: '#fff',
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === 'light'
+                        ? theme.bgColor.light
+                        : theme.bgColor.dark,
                     padding: '3px 10px',
                     borderRadius: '5px',
                   }}

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, TextField, IconButton, Snackbar, Alert } from '@mui/material';
+import { Box, TextField, Snackbar, Alert } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import CloseIcon from '@mui/icons-material/Close';
 
 import ActionIconButton from './ActionIcon';
 
@@ -15,13 +14,16 @@ const StyledInput = styled(TextField)(({ theme, value }) => {
     },
 
     '& .MuiOutlinedInput-root': {
-      backgroundColor: 'white',
+      backgroundColor: theme.bgColor.light,
 
       '& fieldset': {
         border: `2px solid ${colorForBorder}`,
       },
       '&:hover fieldset': {
-        borderColor: theme.palette.primary.light,
+        borderColor:
+          theme.palette.mode === 'light'
+            ? theme.palette.primary.light
+            : theme.palette.primary.dark,
       },
       '&.Mui-focused': {
         '& fieldset': {

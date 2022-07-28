@@ -10,6 +10,7 @@ import { favoritesList } from '../redux/selectors';
 import { getImageById } from '../services/catApi';
 import { Image } from '../types';
 import Loading from '../components/Common/Loading';
+import NoItemFound from '../components/Common/NoItemFound';
 
 const Favorite = () => {
   const [images, setImages] = useState<Image[]>([]);
@@ -42,7 +43,17 @@ const Favorite = () => {
         <Box>
           <SectionTitle title='favorites' />
         </Box>
-        {loading ? <Loading /> : <GalleryImageGrid imageList={images} />}
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            {images.length > 0 ? (
+              <GalleryImageGrid imageList={images} />
+            ) : (
+              <NoItemFound />
+            )}
+          </>
+        )}
       </CustomSection>
     </CustomContainer>
   );

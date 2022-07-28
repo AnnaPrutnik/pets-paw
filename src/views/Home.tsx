@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Stack } from '@mui/material';
+import { Box } from '@mui/material';
+import { useThemeContext } from '../config/themeContext';
 import BgImage from '../images/home/bg-image.png';
-import { shape } from '@mui/system';
 
 const Home = () => {
   return (
@@ -10,8 +10,11 @@ const Home = () => {
         sx={{
           margin: '30px 48px',
           flexGrow: 1,
-          borderRadius: shape.borderRadius,
-          backgroundColor: 'primary.light',
+          borderRadius: '20px',
+          backgroundColor: (theme) =>
+            theme.palette.mode === 'light'
+              ? theme.palette.primary.light
+              : theme.bgColor,
         }}
       />
       <Box
@@ -24,6 +27,7 @@ const Home = () => {
           backgroundImage: `url(${BgImage})`,
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'right',
+          backgroundSize: 'contain',
           zIndex: '2',
         }}
       />

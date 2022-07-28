@@ -9,9 +9,8 @@ import {
   CircularProgress,
 } from '@mui/material';
 import IconFromSprite from '../Common/SvgIconSprite';
-import bgImage from '../../images/gallery/upload-bg.png';
 import { uploadImage } from '../../services/catApi';
-import { user_id } from '../../utils/variables';
+import { user_id } from '../../config/variables';
 
 const UploadModal = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -99,22 +98,22 @@ const UploadModal = () => {
                   ? theme.palette.primary.main
                   : theme.palette.primary.light
               }`,
-            backgroundColor: drag || file ? 'primary.light' : '#fff',
+            backgroundColor: (theme) =>
+              drag ? theme.palette.primary.light : theme.bgColor.light,
             borderRadius: '20px',
           }}
           mb='20px'
         >
           {file ? (
             <Box
+              component='img'
+              src={imageUrl}
               sx={{
-                backgroundColor: '#fff',
+                backgroundColor: (theme) => theme.bgColor.light,
                 width: '100%',
                 height: '100%',
                 borderRadius: '10px',
-                backgroundImage: `url(${imageUrl})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                objectFit: 'cover',
               }}
             />
           ) : (
@@ -124,20 +123,30 @@ const UploadModal = () => {
               sx={{
                 width: '100%',
                 height: '100%',
-                backgroundImage: `url(${bgImage})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fill: (theme) =>
+                  theme.palette.mode === 'light'
+                    ? theme.bgColor.dark
+                    : theme.bgColor.light,
               }}
               onDragStart={onDragStart}
               onDragOver={onDragStart}
               onDragLeave={onDragLeave}
               onDrop={onDropFile}
             >
+              <IconFromSprite icon='load' width='200px' height='200px' />
               <Typography
                 variant='body2'
                 color='text.secondary'
                 component='div'
-                sx={{ display: 'flex', alignItems: 'center' }}
+                sx={{
+                  position: 'absolute',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
               >
                 <Typography
                   variant='body2'
@@ -157,6 +166,9 @@ const UploadModal = () => {
                     padding: '0',
                     margin: '0 5px',
                     color: 'text.primary',
+                    '&:hover': {
+                      backgroundColor: 'transparent',
+                    },
                   }}
                   disableRipple
                   component='label'
@@ -207,20 +219,24 @@ const UploadModal = () => {
             icon={<IconFromSprite icon={result} width='20px' height='20px' />}
             sx={{
               borderRadius: '10px',
-              backgroundColor: '#fff',
+              backgroundColor: (theme) => theme.bgColor.light,
               border: 'none',
-              fontStyle: (theme) => theme.typography.subtitle2,
-              fontWeight: 400,
-              color: 'text.secondary',
+
               fill: result === 'success' ? '#97EAB9' : '#FF868E',
               display: 'flex',
               alignItems: 'center',
               height: '60px',
             }}
           >
-            {result === 'success'
-              ? 'Thanks for the Upload - Cat found!'
-              : 'No Cat found - try a different one'}
+            <Typography
+              variant='subtitle2'
+              component='span'
+              sx={{ fontWeight: 400, color: 'text.secondary' }}
+            >
+              {result === 'success'
+                ? 'Thanks for the Upload - Cat found!'
+                : 'No Cat found - try a different one'}
+            </Typography>
           </Alert>
         )}
       </Box>

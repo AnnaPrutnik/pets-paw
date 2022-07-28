@@ -4,14 +4,14 @@ import { styled } from '@mui/material/styles';
 import { Stack, IconButton } from '@mui/material';
 import IconFromSprite from './SvgIconSprite';
 import { SelectedRoutes } from '../../types';
-import { selectedPath } from '../../utils/variables';
+import { selectedPath } from '../../config/variables';
 
 const StyledIconBtn = styled(IconButton)(({ theme }) => ({
   width: '60px',
   height: '60px',
   fill: theme.palette.primary.main,
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.common.white,
+  backgroundColor: theme.bgColor.light,
 
   '&:hover': {
     backgroundColor: theme.palette.primary.light,

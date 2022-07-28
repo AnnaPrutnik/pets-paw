@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Grid, Stack, Box, Modal } from '@mui/material';
+import { Grid, Stack, Box, Modal, Alert } from '@mui/material';
 import CustomSection from '../components/Common/CustomSection';
 import SectionTitle from '../components/Common/SectionTitle';
 import UploadBtn from '../components/Gallery/UploadBtn';
@@ -10,7 +10,9 @@ import SearchMenu from '../components/Common/SearchMenu';
 import CustomContainer from '../components/Common/Container';
 import Loading from '../components/Common/Loading';
 import UploadModal from '../components/Gallery/UploadModal';
-import { orders, types, limits } from '../utils/variables';
+import NoItemFound from '../components/Common/NoItemFound';
+
+import { orders, types, limits } from '../config/variables';
 import { Image } from '../types';
 import { useSelector } from 'react-redux';
 import { breedsList } from '../redux/selectors';
@@ -28,7 +30,7 @@ const Gallery = () => {
   const [limit, setLimit] = useState(String(limits[0]));
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [images, setImages] = useState<Image[]>([]);
+  const [images, setImages] = useState<Image[] | null>([]);
   const [openUploadModal, setOpenUploadModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -104,7 +106,10 @@ const Gallery = () => {
             onSubmit={onSubmitForm}
             sx={{
               borderRadius: '20px',
-              backgroundColor: (theme) => theme.bgColor,
+              backgroundColor: (theme) =>
+                theme.palette.mode === 'light'
+                  ? theme.bgColor.dark
+                  : theme.bgColor.light,
               padding: '28px 20px 20px 23px',
             }}
           >
@@ -155,7 +160,7 @@ const Gallery = () => {
                 />
               </Grid>
               <Grid item xs={1} alignSelf='flex-end'>
-                <ActionIconButton icon='update' type='submit' />
+                <ActionIconButton icon='update' type='submit' isWhite={true} />
               </Grid>
             </Grid>
           </Box>
@@ -163,7 +168,15 @@ const Gallery = () => {
             <Loading />
           ) : (
             <>
-              {images.length > 0 && <GalleryImageGrid imageList={images} />}
+              {images && (
+                <>
+                  {images.length > 0 ? (
+                    <GalleryImageGrid imageList={images} />
+                  ) : (
+                    <NoItemFound />
+                  )}
+                </>
+              )}
               {totalPages > 1 && (
                 <NavigationBtn
                   page={page}
@@ -183,7 +196,7 @@ const Gallery = () => {
             bottom: '30px',
             right: '30px',
             width: '48%',
-            backgroundColor: (theme) => theme.bgColor,
+            backgroundColor: (theme) => theme.bgColor.dark,
             borderRadius: '20px',
             padding: '100px 20px',
           }}

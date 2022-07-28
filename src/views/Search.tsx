@@ -6,6 +6,7 @@ import SectionTitle from '../components/Common/SectionTitle';
 import SearchMenu from '../components/Common/SearchMenu';
 import CustomContainer from '../components/Common/Container';
 import BreedsImageGrid from '../components/Breeds/BreedsImageGrid';
+import NoItemFound from '../components/Common/NoItemFound';
 import { getBreedsByName } from '../services/catApi';
 import { Image } from '../types';
 import Loading from '../components/Common/Loading';
@@ -17,7 +18,7 @@ interface CustomizedState {
 const Search = () => {
   const location = useLocation().state as CustomizedState;
   const [searchValue, setSearchValue] = useState<string>('');
-  const [images, setImages] = useState<Image[]>([]);
+  const [images, setImages] = useState<Image[] | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -55,7 +56,17 @@ const Search = () => {
         {loading ? (
           <Loading />
         ) : (
-          <>{images.length > 0 && <BreedsImageGrid imageList={images} />}</>
+          <>
+            {images && (
+              <>
+                {images.length > 0 ? (
+                  <BreedsImageGrid imageList={images} />
+                ) : (
+                  <NoItemFound />
+                )}
+              </>
+            )}
+          </>
         )}
       </CustomSection>
     </CustomContainer>

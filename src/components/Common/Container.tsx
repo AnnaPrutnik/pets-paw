@@ -4,6 +4,7 @@ import { Container } from '@mui/material';
 const CustomContainer = ({ children }: React.PropsWithChildren) => {
   return (
     <Container
+      disableGutters
       sx={{
         padding: '30px',
         flexGrow: 1,

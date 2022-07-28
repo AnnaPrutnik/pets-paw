@@ -13,7 +13,7 @@ import BreedsImageGrid from '../components/Breeds/BreedsImageGrid';
 import Loading from '../components/Common/Loading';
 import { getBreedImages } from '../services/catApi';
 import { Breed, Image } from '../types';
-import { limits } from '../utils/variables';
+import { limits } from '../config/variables';
 
 const Breeds = () => {
   const listOfBreeds = useSelector(breedsList);

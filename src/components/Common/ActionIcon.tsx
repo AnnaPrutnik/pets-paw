@@ -18,7 +18,8 @@ const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
   fill: theme.palette.primary.main,
 
   '&.white': {
-    backgroundColor: '#fff',
+    backgroundColor:
+      theme.palette.mode === 'light' ? theme.bgColor.light : theme.bgColor.dark,
   },
   '&.color': {
     backgroundColor: theme.palette.primary.light,

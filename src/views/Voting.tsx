@@ -42,7 +42,7 @@ const Voting = () => {
     }));
     setHistory(
       [...logFav, ...logVotes].sort(
-        (a, b) => moment(a.date).unix() - moment(b.date).unix()
+        (a, b) => moment(b.date).unix() - moment(a.date).unix()
       )
     );
   }, [votes, favorites]);

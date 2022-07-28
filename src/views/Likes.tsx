@@ -8,6 +8,7 @@ import CustomContainer from '../components/Common/Container';
 import ImageGrid from '../components/Common/ImageGrid';
 import ActionIconButton from '../components/Common/ActionIcon';
 import Loading from '../components/Common/Loading';
+import NoItemFound from '../components/Common/NoItemFound';
 import { Image } from '../types';
 import { AppDispatch } from '../redux/store';
 import { remove } from '../redux/votes/votes-operations';
@@ -73,7 +74,13 @@ const Likes = () => {
         {loading ? (
           <Loading />
         ) : (
-          <ImageGrid imageList={images} actionNodeFn={actionForCard} />
+          <>
+            {images.length > 0 ? (
+              <ImageGrid imageList={images} actionNodeFn={actionForCard} />
+            ) : (
+              <NoItemFound />
+            )}
+          </>
         )}
       </CustomSection>
     </CustomContainer>

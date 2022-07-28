@@ -5,7 +5,7 @@ import MenuOption from './MenuOption';
 import votingImg from '../../images/home/vote-table.png';
 import breedsImg from '../../images/home/pet-breeds.png';
 import galleryImg from '../../images/home/images-search.png';
-import { cardsPath } from '../../utils/variables';
+import { cardsPath } from '../../config/variables';
 import { CardsRoutes } from '../../types';
 
 const ImgArray = [votingImg, breedsImg, galleryImg];

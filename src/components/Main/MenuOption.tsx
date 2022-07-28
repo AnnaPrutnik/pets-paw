@@ -5,12 +5,12 @@ import { CardsRoutes } from '../../types';
 
 type Props = {
   image: string;
-  title: 'voting' | 'breeds' | 'gallery';
+  title: CardsRoutes;
   isActive: boolean;
 };
 
 type StyledBoxProps = {
-  title: 'voting' | 'breeds' | 'gallery';
+  title: CardsRoutes;
   image: string;
 };
 
@@ -42,7 +42,10 @@ const StyledButton = styled(Button)(({ theme }) => {
     borderRadius: '10px',
 
     padding: '10px 0',
-    backgroundColor: theme.palette.common.white,
+    backgroundColor:
+      theme.palette.mode === 'light'
+        ? theme.bgColor.light
+        : 'rgba(255, 255, 255, 0.1)',
 
     '.card-item:hover &': {
       backgroundColor: theme.palette.primary.light,

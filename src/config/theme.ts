@@ -1,7 +1,8 @@
-import { createTheme } from '@mui/material';
-
-const theme = createTheme({
-  bgColor: '#F8F8F7',
+export const themeFn = (mode: 'light' | 'dark') => ({
+  bgColor: {
+    dark: mode === 'light' ? '#F8F8F7' : '#1D1D1D',
+    light: mode === 'light' ? '#fff' : 'rgba(255, 255, 255, 0.05)',
+  },
   cards: {
     voting: '#B4B7FF',
     breeds: '#97EAB9',
@@ -49,13 +50,14 @@ const theme = createTheme({
   },
 
   palette: {
+    mode: mode,
     primary: {
       main: '#FF868E',
-      light: '#FBE0DC',
+      light: mode === 'light' ? '#FBE0DC' : 'rgba(255, 134, 142, 0.2)',
       contrastText: '#fff',
     },
     text: {
-      primary: '#1D1D1D',
+      primary: mode === 'light' ? '#1D1D1D' : '#fff',
       secondary: '#8C8C8C',
     },
   },
@@ -86,5 +88,3 @@ const theme = createTheme({
     },
   },
 });
-
-export default theme;

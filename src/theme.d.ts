@@ -2,7 +2,10 @@ import React from 'react';
 
 declare module '@mui/material/styles' {
   interface Theme {
-    bgColor: React.CSSProperties['color'];
+    bgColor: {
+      light: React.CSSProperties['color'];
+      dark: React.CSSProperties['color'];
+    };
     cards: {
       voting: React.CSSProperties['color'];
       breeds: React.CSSProperties['color'];
@@ -23,7 +26,10 @@ declare module '@mui/material/styles' {
   }
 
   interface ThemeOptions {
-    bgColor: React.CSSProperties['color'];
+    bgColor: {
+      light: React.CSSProperties['color'];
+      dark: React.CSSProperties['color'];
+    };
     cards: {
       voting: React.CSSProperties['color'];
       breeds: React.CSSProperties['color'];

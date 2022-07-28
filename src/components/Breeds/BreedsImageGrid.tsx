@@ -42,7 +42,8 @@ const BreedsImageGrid = ({ imageList }: BreedsImageGridProps) => {
     <Button
       variant='contained'
       sx={{
-        backgroundColor: '#fff',
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'light' ? theme.bgColor.light : '#282828',
         color: 'primary.main',
         position: 'absolute',
         bottom: '10px',
@@ -74,5 +75,3 @@ const BreedsImageGrid = ({ imageList }: BreedsImageGridProps) => {
 };
 
 export default BreedsImageGrid;
-
-//                     }

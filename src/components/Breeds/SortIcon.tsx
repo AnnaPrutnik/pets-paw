@@ -14,7 +14,8 @@ const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
   padding: 0,
   borderRadius: '10px',
   fill: theme.palette.text.secondary,
-  backgroundColor: theme.bgColor,
+  backgroundColor:
+    theme.palette.mode === 'light' ? theme.bgColor.dark : theme.bgColor.light,
   border: `2px solid transparent`,
 
   '&:hover': {
