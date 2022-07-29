@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { Box } from '@mui/material';
-import CustomSection from '../components/Common/CustomSection';
-import SectionTitle from '../components/Common/SectionTitle';
+import CustomSection from '../components/shared/CustomSection';
+import SectionTitle from '../components/shared/SectionTitle';
 import ActionGroupBtn from '../components/Voting/ActionGroupBtn';
-import SearchMenu from '../components/Common/SearchMenu';
-import CustomContainer from '../components/Common/Container';
-import Loading from '../components/Common/Loading';
+import SearchMenu from '../components/layouts/SearchMenu';
+import CustomContainer from '../components/shared/CustomContainer';
+import Loading from '../components/layouts/Loading';
 import { getRandomImage } from '../services/catApi';
 import { Image, History } from '../types';
 import { HistoryTable } from '../components/Voting/HistoryTable';
@@ -23,7 +23,7 @@ const Voting = () => {
 
   useEffect(() => {
     setLoading(true);
-    handlerGetImage();
+    onGetImage();
   }, []);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Voting = () => {
     );
   }, [votes, favorites]);
 
-  const handlerGetImage = async () => {
+  const onGetImage = async () => {
     const result = await getRandomImage();
     setImage(result);
     setLoading(false);
@@ -77,7 +77,7 @@ const Voting = () => {
                     objectFit: 'cover',
                   }}
                 />
-                <ActionGroupBtn getImageFn={handlerGetImage} image={image} />
+                <ActionGroupBtn getImageFn={onGetImage} image={image} />
               </Box>
             )}
             {history.length > 0 && <HistoryTable history={history} />}

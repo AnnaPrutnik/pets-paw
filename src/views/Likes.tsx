@@ -1,14 +1,14 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import CustomSection from '../components/Common/CustomSection';
-import SectionTitle from '../components/Common/SectionTitle';
-import SearchMenu from '../components/Common/SearchMenu';
-import CustomContainer from '../components/Common/Container';
-import ImageGrid from '../components/Common/ImageGrid';
-import ActionIconButton from '../components/Common/ActionIcon';
-import Loading from '../components/Common/Loading';
-import NoItemFound from '../components/Common/NoItemFound';
+import CustomSection from '../components/shared/CustomSection';
+import SectionTitle from '../components/shared/SectionTitle';
+import SearchMenu from '../components/layouts/SearchMenu';
+import CustomContainer from '../components/shared/CustomContainer';
+import ImageGrid from '../components/shared/ImageGrid';
+import ActionIconButton from '../components/shared/ActionIconBtn';
+import Loading from '../components/layouts/Loading';
+import NoItemFound from '../components/shared/NoItemFound';
 import { Image } from '../types';
 import { AppDispatch } from '../redux/store';
 import { remove } from '../redux/votes/votes-operations';
@@ -59,7 +59,7 @@ const Likes = () => {
         <ActionIconButton
           icon='likes'
           isWhite={true}
-          handlerClick={() => onClickImage(image)}
+          onClick={() => onClickImage(image)}
         />
       </Box>
     );

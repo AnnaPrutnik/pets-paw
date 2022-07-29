@@ -2,15 +2,14 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box, Stack, Button, Typography, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import CustomSection from '../components/Common/CustomSection';
-import SectionTitle, {
-  StyledTypography,
-} from '../components/Common/SectionTitle';
+import CustomSection from '../components/shared/CustomSection';
+import SectionTitle from '../components/shared/SectionTitle';
+import StyledTitle from '../components/ui/StyledTitle';
 import { getBreedImages } from '../services/catApi';
 import { Breed, Image } from '../types';
 import { limitsImagesForBreed } from '../config/variables';
-import emptyImage from '../images/search/empty.png';
-import Loading from '../components/Common/Loading';
+import emptyImage from '../assets/images/search/empty.png';
+import Loading from '../components/layouts/Loading';
 
 interface CustomizedState {
   data: Breed;
@@ -80,9 +79,9 @@ const BreedInfo = () => {
         <SectionTitle title='breeds' isLight={true} />
         {breed && (
           <Box>
-            <StyledTypography className='color' variant='h6'>
+            <StyledTitle className='color' variant='h6'>
               {breed.id}
-            </StyledTypography>
+            </StyledTitle>
           </Box>
         )}
       </Stack>

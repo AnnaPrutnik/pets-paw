@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ButtonGroup, IconButton, Divider, Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import IconFromSprite from '../Common/SvgIconSprite';
+import IconFromSprite from '../ui/SvgIconSprite';
 import { styled } from '@mui/material/styles';
 import { Image } from '../../types';
 import { AppDispatch } from '../../redux/store';

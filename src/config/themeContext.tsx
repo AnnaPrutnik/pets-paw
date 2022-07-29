@@ -2,6 +2,7 @@ import React, { useState, useContext, createContext } from 'react';
 
 type Theme = 'light' | 'dark';
 
+//TODO: add mode to localStorage or cookie
 interface ThemeContextInterface {
   mode: Theme;
   toggleMode: () => void;

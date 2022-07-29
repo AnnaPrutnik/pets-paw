@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { useThemeContext } from '../config/themeContext';
-import BgImage from '../images/home/bg-image.png';
+import BgImage from '../assets/images/home/bg-image.png';
 
 const Home = () => {
   return (

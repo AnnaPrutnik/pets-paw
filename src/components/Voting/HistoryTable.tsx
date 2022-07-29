@@ -2,7 +2,7 @@ import React from 'react';
 import { History } from '../../types';
 import { styled } from '@mui/material/styles';
 import { Stack, Box, Typography } from '@mui/material';
-import IconFromSprite from '../Common/SvgIconSprite';
+import IconFromSprite from '../ui/SvgIconSprite';
 import moment from 'moment';
 
 interface HistoryTableProps {

@@ -8,11 +8,11 @@ import {
   useTheme,
   IconButton,
 } from '@mui/material';
-import MainMenu from '../components/Main/MainMenu';
-import Logo from '../images/home/logo.svg';
-import PetsPawDark from '../images/home/PetsPaw.png';
-import PetsPawLight from '../images/home/PetsPaw-white.png';
-import CustomSwitch from '../components/Main/CustomSwitch';
+import MainMenu from '../components/layouts/MainMenu';
+import CustomSwitch from '../components/ui/CustomSwitch';
+import Logo from '../assets/images/home/logo.svg';
+import PetsPawDark from '../assets/images/home/PetsPaw.png';
+import PetsPawLight from '../assets/images/home/PetsPaw-white.png';
 import { styled } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { list } from '../redux/breeds/breed-operations';

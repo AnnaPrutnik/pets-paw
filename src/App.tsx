@@ -4,7 +4,7 @@ import { themeFn } from './config/theme';
 import { useThemeContext } from './config/themeContext';
 
 import './App.css';
-import AppRouter from './components/Main/AppRouter';
+import AppRouter from './components/screens/AppRouter';
 
 function App() {
   const { mode } = useThemeContext();

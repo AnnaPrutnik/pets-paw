@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
-import CustomSection from '../components/Common/CustomSection';
-import SectionTitle from '../components/Common/SectionTitle';
-import SearchMenu from '../components/Common/SearchMenu';
-import CustomContainer from '../components/Common/Container';
-import GalleryImageGrid from '../components/Gallery/GalleryImageGrid';
+import CustomSection from '../components/shared/CustomSection';
+import SectionTitle from '../components/shared/SectionTitle';
+import SearchMenu from '../components/layouts/SearchMenu';
+import CustomContainer from '../components/shared/CustomContainer';
+import GalleryImageGrid from '../components/layouts/GalleryImageGrid';
 import { favoritesList } from '../redux/selectors';
 import { getImageById } from '../services/catApi';
 import { Image } from '../types';
-import Loading from '../components/Common/Loading';
-import NoItemFound from '../components/Common/NoItemFound';
+import Loading from '../components/layouts/Loading';
+import NoItemFound from '../components/shared/NoItemFound';
 
 const Favorite = () => {
   const [images, setImages] = useState<Image[]>([]);

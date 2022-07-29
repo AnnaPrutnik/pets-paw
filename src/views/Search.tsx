@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box } from '@mui/material';
-import CustomSection from '../components/Common/CustomSection';
-import SectionTitle from '../components/Common/SectionTitle';
-import SearchMenu from '../components/Common/SearchMenu';
-import CustomContainer from '../components/Common/Container';
-import BreedsImageGrid from '../components/Breeds/BreedsImageGrid';
-import NoItemFound from '../components/Common/NoItemFound';
+import CustomSection from '../components/shared/CustomSection';
+import SectionTitle from '../components/shared/SectionTitle';
+import SearchMenu from '../components/layouts/SearchMenu';
+import CustomContainer from '../components/shared/CustomContainer';
+import BreedsImageGrid from '../components/layouts/BreedsImageGrid';
+import NoItemFound from '../components/shared/NoItemFound';
 import { getBreedsByName } from '../services/catApi';
 import { Image } from '../types';
-import Loading from '../components/Common/Loading';
+import Loading from '../components/layouts/Loading';
 
 interface CustomizedState {
   searchValue: string;

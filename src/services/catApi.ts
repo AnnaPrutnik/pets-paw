@@ -6,6 +6,10 @@ interface CustomHeaderProp extends HeadersDefaults {
   'x-api-key': string;
 }
 
+interface deleteProps {
+  message: string;
+}
+
 axios.defaults.baseURL = 'https://api.thecatapi.com/v1/';
 axios.defaults.headers = {
   'x-api-key': 'c3bbcecb-6277-4d5c-ba42-d816fa3cb5dc',
@@ -41,10 +45,6 @@ export async function addtoVote(image_id: string, vote: 0 | 1) {
 
   const { data } = await axios.post<ResponseAddValue>('/votes', body);
   return data;
-}
-
-interface deleteProps {
-  message: string;
 }
 
 export async function deleteFromVotes(id: string) {

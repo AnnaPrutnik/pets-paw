@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Grid, Stack, Box, Modal, Alert } from '@mui/material';
-import CustomSection from '../components/Common/CustomSection';
-import SectionTitle from '../components/Common/SectionTitle';
-import UploadBtn from '../components/Gallery/UploadBtn';
-import ActionIconButton from '../components/Common/ActionIcon';
-import CustomSelect from '../components/Common/CustomSelect';
-import NavigationBtn from '../components/Common/NavigationBtn';
-import SearchMenu from '../components/Common/SearchMenu';
-import CustomContainer from '../components/Common/Container';
-import Loading from '../components/Common/Loading';
-import UploadModal from '../components/Gallery/UploadModal';
-import NoItemFound from '../components/Common/NoItemFound';
+import { Grid, Stack, Box } from '@mui/material';
+import CustomSection from '../components/shared/CustomSection';
+import SectionTitle from '../components/shared/SectionTitle';
+import UploadBtn from '../components/shared/UploadBtn';
+import ActionIconButton from '../components/shared/ActionIconBtn';
+import CustomSelect from '../components/shared/CustomSelect';
+import NavigationBtn from '../components/layouts/NavigationBar';
+import SearchMenu from '../components/layouts/SearchMenu';
+import CustomContainer from '../components/shared/CustomContainer';
+import Loading from '../components/layouts/Loading';
+import NoItemFound from '../components/shared/NoItemFound';
+import CustomModal from '../components/layouts/CutomModal';
 
 import { orders, types, limits } from '../config/variables';
 import { Image } from '../types';
@@ -20,7 +20,7 @@ import {
   getImageForGallery,
   getImageForGalleryRandomBreed,
 } from '../services/catApi';
-import GalleryImageGrid from '../components/Gallery/GalleryImageGrid';
+import GalleryImageGrid from '../components/layouts/GalleryImageGrid';
 
 const Gallery = () => {
   const breeds = useSelector(breedsList);
@@ -86,6 +86,8 @@ const Gallery = () => {
     }
     setLoading(false);
   };
+
+  const onCloseModal = () => setOpenUploadModal(false);
 
   return (
     <>
@@ -187,31 +189,8 @@ const Gallery = () => {
             </>
           )}
         </CustomSection>
+        <CustomModal open={openUploadModal} onClose={onCloseModal} />
       </CustomContainer>
-      <Modal open={openUploadModal} onClose={() => setOpenUploadModal(false)}>
-        <Stack
-          sx={{
-            position: 'absolute',
-            top: '30px',
-            bottom: '30px',
-            right: '30px',
-            width: '48%',
-            backgroundColor: (theme) => theme.bgColor.dark,
-            borderRadius: '20px',
-            padding: '100px 20px',
-          }}
-          alignItems='center'
-        >
-          <Box sx={{ position: 'absolute', top: '20px', right: '20px' }}>
-            <ActionIconButton
-              icon='close'
-              isWhite={true}
-              handlerClick={() => setOpenUploadModal(false)}
-            />
-          </Box>
-          <UploadModal />
-        </Stack>
-      </Modal>
     </>
   );
 };
