@@ -1,4 +1,4 @@
-import { Routers, CardsRoutes, SelectedRoutes, Order, Types } from '../types';
+import { Routers, CardsRoutes, SelectedRoutes } from '../../types';
 
 export const cardsPath: CardsRoutes[] = ['voting', 'breeds', 'gallery'];
 

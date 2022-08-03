@@ -11,7 +11,7 @@ import UploadModalTitle from '../ui/UploadModalTitle';
 import UploadModalResultInfo from '../ui/UploadModalResultInfo';
 import UploadModalDragClickText from '../ui/UploadModalDragClickText';
 import { uploadImage } from '../../services/catApi';
-import { user_id } from '../../config/variables';
+import { user_id } from '../../utils/constants/variables';
 
 const UploadModal = () => {
   const [file, setFile] = useState<File | null>(null);

@@ -1,8 +1,6 @@
-import React, { useState, useContext, createContext } from 'react';
+import React, { useState, useContext, createContext, useEffect } from 'react';
+import { Theme } from '../types';
 
-type Theme = 'light' | 'dark';
-
-//TODO: add mode to localStorage or cookie
 interface ThemeContextInterface {
   mode: Theme;
   toggleMode: () => void;
@@ -11,7 +9,17 @@ interface ThemeContextInterface {
 export const ThemeContext = createContext<ThemeContextInterface | null>(null);
 
 const ThemeProvider = ({ children }: React.PropsWithChildren) => {
-  const [mode, setMode] = useState<Theme>('light');
+  const [mode, setMode] = useState<Theme>(() => {
+    let theme = JSON.parse(localStorage.getItem('theme') as Theme);
+    if (theme === 'light' || theme === 'dark') {
+      return theme;
+    }
+    return 'light';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(mode));
+  }, [mode]);
 
   const toggleMode = () =>
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));

@@ -1,6 +1,6 @@
 export type CardsRoutes = 'voting' | 'breeds' | 'gallery';
 export type SelectedRoutes = 'favorites' | 'likes' | 'dislikes';
-
+export type Theme = 'light' | 'dark';
 export type Routers = CardsRoutes | SelectedRoutes | 'search';
 
 export interface Image {
@@ -52,6 +52,14 @@ export interface Breed {
   life_span: string;
 }
 
-export type Order = 'Random' | 'Desc' | 'Asc';
+export interface SearchQuery {
+  order: string;
+  type: string;
+  breed: string;
+  limit: number;
+}
 
-export type Types = 'All' | 'Static' | 'Animated';
+export interface BreedSearchQuery {
+  breed: string;
+  limit: number;
+}

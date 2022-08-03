@@ -1,5 +1,5 @@
 import axios, { HeadersDefaults } from 'axios';
-import { user_id, limitsImagesForBreed } from '../config/variables';
+import { user_id, limitsImagesForBreed } from '../utils/constants/variables';
 import { Image, Favorite, Breed, Vote, ResponseAddValue } from '../types';
 
 interface CustomHeaderProp extends HeadersDefaults {

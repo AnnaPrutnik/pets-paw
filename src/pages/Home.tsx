@@ -13,7 +13,7 @@ const Home = () => {
           backgroundColor: (theme) =>
             theme.palette.mode === 'light'
               ? theme.palette.primary.light
-              : theme.bgColor,
+              : theme.bgColor.light,
         }}
       />
       <Box

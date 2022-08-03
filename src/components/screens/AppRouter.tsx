@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import Main from '../../views/Main';
-import Home from '../../views/Home';
-import Voting from '../../views/Voting';
-import Breeds from '../../views/Breeds';
-import Gallery from '../../views/Gallery';
-import BreedInfo from '../../views/BreedInfo';
-import Favorite from '../../views/Favorite';
-import Likes from '../../views/Likes';
-import Dislikes from '../../views/Dislikes';
-import Search from '../../views/Search';
+import Main from '../../pages/Main';
+import Home from '../../pages/Home';
+import Voting from '../../pages/Voting';
+import Breeds from '../../pages/Breeds';
+import Gallery from '../../pages/Gallery';
+import BreedInfo from '../../pages/BreedInfo';
+import Favorite from '../../pages/Favorite';
+import Likes from '../../pages/Likes';
+import Dislikes from '../../pages/Dislikes';
+import Search from '../../pages/Search';
+import { operations } from '../../redux';
+import { AppDispatch } from '../../redux/store';
 
 const AppRouter = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const { breeds, votes, favorites } = operations;
+
+  useEffect(() => {
+    dispatch(breeds());
+    dispatch(votes());
+    dispatch(favorites());
+  }, []);
+
   return (
     <Routes>
       <Route path='/' element={<Main />}>

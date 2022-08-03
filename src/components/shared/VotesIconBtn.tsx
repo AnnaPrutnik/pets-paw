@@ -4,7 +4,7 @@ import { Stack } from '@mui/material';
 import IconFromSprite from '../ui/SvgIconSprite';
 import StyledVotesIconBtn from '../ui/StyledVotesIconBtn';
 import { SelectedRoutes } from '../../types';
-import { selectedPath } from '../../config/variables';
+import { selectedPath } from '../../utils/constants/variables';
 
 const VotesIconBtn = () => {
   const [active, setActive] = useState<SelectedRoutes | null>(null);
