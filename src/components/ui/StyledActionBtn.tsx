@@ -16,11 +16,17 @@ interface StyledBtnProps {
 
 const StyledIconBtn = styled(IconButton)<StyledBtnProps>(({ theme, title }) => {
   return {
-    width: '80px',
-    height: '80px',
     fill: theme.palette.common.white,
     backgroundColor: theme.voting.default[title],
     borderRadius: 0,
+    [theme.breakpoints.down('tablet')]: {
+      width: '60px',
+      height: '60px',
+    },
+    [theme.breakpoints.up('tablet')]: {
+      width: '80px',
+      height: '80px',
+    },
 
     '&:hover': {
       backgroundColor: theme.voting.hover[title],

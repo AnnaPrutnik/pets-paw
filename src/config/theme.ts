@@ -66,6 +66,15 @@ export const themeFn = (mode: 'light' | 'dark') => ({
     borderRadius: 20,
   },
 
+  breakpoints: {
+    values: {
+      mini: 0,
+      mobile: 375,
+      tablet: 768,
+      desktop: 1440,
+    },
+  },
+
   components: {
     MuiPaper: {
       styleOverrides: {
@@ -85,15 +94,6 @@ export const themeFn = (mode: 'light' | 'dark') => ({
           },
         },
       },
-    },
-  },
-
-  breakpoints: {
-    values: {
-      mini: 0,
-      mobile: 375,
-      tablet: 768,
-      desktop: 1440,
     },
   },
 });
