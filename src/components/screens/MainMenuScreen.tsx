@@ -1,19 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Box, Typography, Stack, IconButton, useTheme } from '@mui/material';
+import { Box, Typography, Stack, useTheme } from '@mui/material';
 import MainMenu from '../layouts/MainMenu';
-import CustomSwitch from '../ui/CustomSwitch';
+import SwitchMode from '../layouts/SwitchMode';
 import Logo from '../../assets/images/home/logo.svg';
 import PetsPawDark from '../../assets/images/home/PetsPaw.png';
 import PetsPawLight from '../../assets/images/home/PetsPaw-white.png';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { useThemeContext } from '../../config/themeContext';
 
 const MainMenuScreen = () => {
   const theme = useTheme();
-  const { mode, toggleMode } = useThemeContext();
-
   return (
     <Stack sx={{ paddingTop: '38px', position: 'fixed' }}>
       <Stack
@@ -27,25 +22,12 @@ const MainMenuScreen = () => {
             <Box component='img' src={Logo} alt='Logo' />
             <Box
               component='img'
-              src={mode === 'light' ? PetsPawDark : PetsPawLight}
+              src={theme.palette.mode === 'light' ? PetsPawDark : PetsPawLight}
               alt='PetsPaw'
             />
           </Stack>
         </NavLink>
-        <Box>
-          <IconButton
-            onClick={toggleMode}
-            disableRipple
-            sx={{ padding: 0, marginRight: '5px' }}
-          >
-            {theme.palette.mode === 'light' ? (
-              <LightModeIcon color='primary' />
-            ) : (
-              <DarkModeIcon color='inherit' />
-            )}
-          </IconButton>
-          <CustomSwitch checked={mode === 'light'} onChange={toggleMode} />
-        </Box>
+        <SwitchMode />
       </Stack>
       <Typography component='h2' variant='h3' color='text.primary' mb='10px'>
         Hi, my friend!

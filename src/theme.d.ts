@@ -48,4 +48,16 @@ declare module '@mui/material/styles' {
       };
     };
   }
+
+  interface BreakpointOverrides {
+    xs: false;
+    sm: false;
+    md: false;
+    lg: false;
+    xl: false;
+    mini: true;
+    mobile: true;
+    tablet: true;
+    desktop: true;
+  }
 }

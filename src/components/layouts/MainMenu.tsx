@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
-import { List, ListItem } from '@mui/material';
+import { List, ListItem, useTheme } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuOption from '../shared/MenuOption';
 import votingImg from '../../assets/images/home/vote-table.png';
 import breedsImg from '../../assets/images/home/pet-breeds.png';
@@ -13,6 +14,8 @@ const ImgArray = [votingImg, breedsImg, galleryImg];
 const MainMenu = () => {
   const [active, setActive] = useState<CardsRoutes | null>(null);
   const location = useLocation();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('tablet'));
 
   useEffect(() => {
     if (location.pathname === '/') {
@@ -31,10 +34,20 @@ const MainMenu = () => {
 
   return (
     <nav>
-      <List disablePadding sx={{ display: 'flex', gap: '16px' }}>
+      <List
+        disablePadding
+        sx={
+          matches
+            ? { display: 'flex', gap: '16px' }
+            : { display: 'flex', flexDirection: 'column', gap: '20px' }
+        }
+      >
         {cardsPath.map((path, index) => (
           <ListItem disablePadding key={path}>
-            <NavLink to={path} style={() => ({ textDecoration: 'none' })}>
+            <NavLink
+              to={`/${path}`}
+              style={() => ({ textDecoration: 'none', width: '100%' })}
+            >
               <MenuOption
                 image={ImgArray[index]}
                 title={path}

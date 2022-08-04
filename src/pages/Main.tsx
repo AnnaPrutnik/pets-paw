@@ -7,7 +7,6 @@ import MainMenuScreen from '../components/screens/MainMenuScreen';
 const StyledGrid = styled(Grid)(({ theme }) => ({
   width: '100%',
   minHeight: '100vh',
-  backgroundColor: theme.bgColor.dark,
 }));
 
 const Main = () => {
@@ -15,7 +14,8 @@ const Main = () => {
     <StyledGrid container>
       <Grid
         item
-        xs={5.7}
+        mini={12}
+        desktop={5.7}
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -24,7 +24,7 @@ const Main = () => {
       >
         <MainMenuScreen />
       </Grid>
-      <Grid item xs={6.3}>
+      <Grid item mini={0} desktop={6.3}>
         <Stack sx={{ width: '100%', minHeight: '100vh', position: 'relative' }}>
           <Outlet />
         </Stack>

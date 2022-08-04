@@ -87,4 +87,13 @@ export const themeFn = (mode: 'light' | 'dark') => ({
       },
     },
   },
+
+  breakpoints: {
+    values: {
+      mini: 0,
+      mobile: 375,
+      tablet: 768,
+      desktop: 1440,
+    },
+  },
 });

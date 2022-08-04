@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Button } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Box, Button, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { CardsRoutes } from '../../types';
 
@@ -64,23 +65,34 @@ const StyledButton = styled(Button)(({ theme }) => {
 });
 
 const MenuOption = ({ image, title, isActive }: Props) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('tablet'));
+
   return (
     <Box
-      sx={{
-        width: 138,
-        height: 244,
-        cursor: 'pointer',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      sx={
+        matches
+          ? {
+              width: 138,
+              height: 244,
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+            }
+          : {
+              width: '100%',
+            }
+      }
       className='card-item'
     >
-      <StyledBox
-        title={title}
-        image={image}
-        className={isActive ? 'active' : 'non-active'}
-        mb='10px'
-      />
+      {matches && (
+        <StyledBox
+          title={title}
+          image={image}
+          className={isActive ? 'active' : 'non-active'}
+          mb='10px'
+        />
+      )}
       <StyledButton
         disableRipple
         className={isActive ? 'active' : 'non-active'}

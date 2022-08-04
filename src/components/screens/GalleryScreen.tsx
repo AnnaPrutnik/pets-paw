@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import SectionWrapper from '../layouts/SectionWrapper';
 import SectionTitle from '../shared/SectionTitle';
 import UploadBtn from '../shared/UploadBtn';
@@ -9,6 +10,7 @@ import Loading from '../layouts/Loading';
 import NoItemFound from '../shared/NoItemFound';
 import CustomModal from '../layouts/CutomModal';
 import GalleryImageGrid from '../layouts/GalleryImageGrid';
+import UploadModal from '../layouts/UploadModal';
 import { orders, types, limits } from '../../utils/constants/variables';
 import { Image, SearchQuery } from '../../types';
 import {
@@ -30,6 +32,8 @@ const GalleryScreen = () => {
   const [images, setImages] = useState<Image[] | null>([]);
   const [openUploadModal, setOpenUploadModal] = useState(false);
   const [loading, setLoading] = useState(false);
+  const theme = useTheme();
+  const tablet = useMediaQuery(theme.breakpoints.up('tablet'));
 
   useEffect(() => {
     setPage(1);
@@ -79,7 +83,7 @@ const GalleryScreen = () => {
     <SectionWrapper>
       <Stack
         mb='20px'
-        direction='row'
+        direction={tablet ? 'row' : 'column'}
         spacing='10px'
         sx={{ justifyContent: 'space-between' }}
       >
@@ -109,7 +113,9 @@ const GalleryScreen = () => {
         </>
       )}
 
-      <CustomModal open={openUploadModal} onClose={onCloseModal} />
+      <CustomModal open={openUploadModal} onClose={onCloseModal}>
+        <UploadModal />
+      </CustomModal>
     </SectionWrapper>
   );
 };

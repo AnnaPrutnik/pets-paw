@@ -20,7 +20,6 @@ const UploadModalTitle = () => {
         </Link>
         or face deletion.
       </Typography>
-      ;
     </>
   );
 };

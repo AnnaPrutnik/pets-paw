@@ -12,10 +12,11 @@ const UploadModalDragClickText = ({
     <Typography
       variant='body2'
       color='text.secondary'
-      component='div'
+      component='p'
       sx={{
         position: 'absolute',
         display: 'flex',
+        flexWrap: 'wrap',
         alignItems: 'center',
       }}
     >

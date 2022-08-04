@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
-import { ImageList, ImageListItem } from '@mui/material';
+import { ImageList, ImageListItem, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import StyledImageBar from '../ui/StyledImageBar';
 import { srcset } from '../../utils/helpers/strings/url-creator.helpers';
 import { arrayDivider } from '../../utils/helpers/arrays/array-divider.helpers';
@@ -17,6 +18,9 @@ const ImageGrid = ({
   onClickImage,
   actionNodeFn,
 }: ImageGridProps) => {
+  const theme = useTheme();
+  const tablet = useMediaQuery(theme.breakpoints.up('tablet'));
+
   const dividedArray = useMemo(() => {
     return arrayDivider(imageList, 5);
   }, [imageList]);
@@ -30,8 +34,10 @@ const ImageGrid = ({
     [onClickImage]
   );
 
+  const rowHeight = tablet ? 140 : 'auto';
+
   return (
-    <ImageList variant='quilted' cols={3} rowHeight={140} gap={20}>
+    <ImageList variant='quilted' cols={3} rowHeight={rowHeight} gap={20}>
       {dividedArray.map((grid, gridIndex) => (
         <React.Fragment key={gridIndex}>
           {grid.map((item, itemIndex) => {
@@ -41,11 +47,13 @@ const ImageGrid = ({
             return (
               <ImageListItem
                 key={item.id || item.breeds[0].id}
-                cols={itemIndex === numberForCols ? 2 : 1}
+                cols={tablet ? (itemIndex === numberForCols ? 2 : 1) : 3}
                 rows={
-                  itemIndex === numbersForRows[0] ||
-                  itemIndex === numbersForRows[1]
-                    ? 2
+                  tablet
+                    ? itemIndex === numbersForRows[0] ||
+                      itemIndex === numbersForRows[1]
+                      ? 2
+                      : 1
                     : 1
                 }
                 sx={{

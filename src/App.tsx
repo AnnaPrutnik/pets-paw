@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
+import { ThemeProvider, CssBaseline, createTheme, Box } from '@mui/material';
 import { themeFn } from './config/theme';
 import { useThemeContext } from './config/themeContext';
 
@@ -18,7 +18,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppRouter />
+      <Box sx={{ backgroundColor: (theme) => theme.bgColor.dark }}>
+        <AppRouter />
+      </Box>
     </ThemeProvider>
   );
 }

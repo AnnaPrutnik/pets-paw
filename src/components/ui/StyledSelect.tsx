@@ -24,7 +24,7 @@ const StyledInputForSelect = styled(InputBase)(({ theme }) => ({
   },
 
   '&.grey .MuiSelect-select': {
-    backgroundColor: theme.bgColor,
+    backgroundColor: theme.bgColor.dark,
     color: theme.palette.text.secondary,
   },
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import { Stack, Box } from '@mui/material';
+import { Stack, Box, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
 import SectionWrapper from '../layouts/SectionWrapper';
 import SectionTitle from '../shared/SectionTitle';
@@ -26,6 +27,8 @@ const BreedsScreen = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [loading, setLoading] = useState(false);
+  const theme = useTheme();
+  const tablet = useMediaQuery(theme.breakpoints.up('tablet'));
 
   useEffect(() => {
     setPage(1);
@@ -93,7 +96,7 @@ const BreedsScreen = () => {
     <SectionWrapper>
       <Stack
         mb='20px'
-        direction='row'
+        direction={tablet ? 'row' : 'column'}
         spacing='10px'
         sx={{ justifyContent: 'flex-start' }}
       >

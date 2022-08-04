@@ -10,6 +10,7 @@ const CustomContainer = ({ children }: React.PropsWithChildren) => {
         flexGrow: 1,
         display: 'flex',
         flexDirection: 'column',
+        minHeight: '100vh',
       }}
     >
       {children}
